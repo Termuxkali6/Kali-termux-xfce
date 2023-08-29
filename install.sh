@@ -37,6 +37,7 @@ CHROOT=kali-${archurl}
 }
 function add_kali_launcher () {
 cd
+CHROOT=kali-${archurl}
 kali=$PREFIX/bin/kali
 rm -rf $kali
 cat > $kali <<- EOM
