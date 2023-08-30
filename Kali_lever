@@ -1,0 +1,23 @@
+
+echo "[1] start kali user "
+echo "[2] start root user "
+read -p "why you login : " wimg
+        if (( $wimg == "1" ));
+        then
+            wimg="full"
+        elif (( $wimg == "2" ));
+        then
+            wimg="minimal"
+        elif (( $wimg == "3" ));
+        then
+            wimg="nano"
+        else
+            wimg="full"
+        fi
+function full () {
+sudo -u kali /bin/bash
+}
+function minimal () {
+echo
+}
+$wimg
