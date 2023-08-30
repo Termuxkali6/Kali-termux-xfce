@@ -4,20 +4,20 @@ echo "[2] start root user "
 read -p "why you login : " wimg
         if (( $wimg == "1" ));
         then
-            wimg="full"
+            wimg="kali"
         elif (( $wimg == "2" ));
         then
-            wimg="minimal"
+            wimg="root"
         elif (( $wimg == "3" ));
         then
-            wimg="nano"
+            wimg="exit"
         else
-            wimg="full"
+            wimg="exit"
         fi
-function full () {
+function kali () {
 sudo -u kali /bin/bash
 }
-function minimal () {
+function root () {
 echo
 }
 $wimg
