@@ -1,3 +1,4 @@
+cd
 # Add some colours 
  red='\033[1;31m' 
  green='\033[1;32m' 
@@ -18,9 +19,7 @@ case `dpkg --print-architecture` in
 
                 *)
                         echo "unknown architecture"; exit  ;;
-                esac
-                
-                
+                esac 
 }                
 function install_package () {
 apt update
@@ -39,22 +38,13 @@ function add_kali_launcher () {
 cd
 CHROOT=kali-${archurl}
 kali=$PREFIX/bin/kali
-rm -rf $kali
+rm -rf $kali-r
 cat > $kali <<- EOM
 #/data/data/com.termux/files/usr/bin/bash
 unset LD_PRELOAD
-proot -k 4.14.81 --link2symlink -0 -r $CHROOT -b /dev -b /dev/null:/proc/sys/kernel/cap_last_cap -b /proc -b /dev/null:/proc/stat -b /sys -b /data/data/com.termux/files/usr/tmp:/tmp -b $CHROOT/tmp:/dev/shm -b /:/host-rootfs -b /sdcard -b /storage -b /mnt -w /home/kali  /usr/bin/env -i HOME=/home/kali PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games TERM=$TERM LANG=C.UTF-8 sudo -u kali /bin/bash
+proot -k 4.14.81 --link2symlink -0 -r $CHROOT -b /dev -b /dev/null:/proc/sys/kernel/cap_last_cap -b /proc -b /dev/null:/proc/stat -b /sys -b /data/data/com.termux/files/usr/tmp:/tmp -b $CHROOT/tmp:/dev/shm -b /:/host-rootfs -b /sdcard -b /storage -b /mnt -w /root  /usr/bin/env -i HOME=/root PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games TERM=$TERM LANG=C.UTF-8 /bin/bash 
 EOM
 chmod +x $kali
-
-kali_r=$PREFIX/bin/kali-r
-rm -rf $kali-r
-cat > $kali_r <<- EOM
-#/data/data/com.termux/files/usr/bin/bash
-unset LD_PRELOAD
-proot -k 4.14.81 --link2symlink -0 -r $CHROOT -b /dev -b /dev/null:/proc/sys/kernel/cap_last_cap -b /proc -b /dev/null:/proc/stat -b /sys -b /data/data/com.termux/files/usr/tmp:/tmp -b $CHROOT/tmp:/dev/shm -b /:/host-rootfs -b /sdcard -b /storage -b /mnt -w /root  /usr/bin/env -i HOME=/root PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games TERM=$TERM LANG=C.UTF-8 /bin/bash --login
-EOM
-chmod +x $kali_r
 }
 function fix_sudo () {
 ## fix sudo and su
@@ -97,10 +87,21 @@ cd
 add_kali_launcher
 cd
 fix_sudo
+rm -rf $CHROOT/root/.bashrc
+mkdir kali_root
+cd kali_root
+wget -O .bashrc https://raw.githubusercontent.com/Termuxkali6/Kali-termux-xfce/main/Kali_lever
+cp .bashrc $HOME/$CHROOT/root
+cd
 kali_logo
-printf "${green} kali = start kali${reset}\n"
-printf "${green} kali-r = start kali as root${reset}\n"
+printf "${green} [=] kali install complete${reset}\n"
+printf "${green}[+]kali = start kali${reset}\n"
 
+
+ 
+ 
+ 
+  
  
  
  
