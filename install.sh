@@ -93,26 +93,20 @@ kali-r
 }
 
 
-
 function kali_logo() {
-    clear
-    printf "${red}##################################################\n"
-    printf "${red}##                                              ##\n"
-    printf "${red}##  88      a8P         db        88        88  ##\n"
-    printf "${red}##  88    .88'         d88b       88        88  ##\n"
-    printf "${red}##  88   88'          d8''8b      88        88  ##\n"
-    printf "${red}##  88 d88           d8'  '8b     88        88  ##\n"
-    printf "${red}##  8888'88.        d8YaaaaY8b    88        88  ##\n"
-    printf "${red}##  88P   Y8b      d8''''''''8b   88        88  ##\n"
-    printf "${red}##  88     '88.   d8'        '8b  88        88  ##\n"
-    printf "${red}##  88       Y8b d8'          '8b 888888888 88  ##\n"
-    printf "${red}##                                              ##\n"
-    printf "${red}####  ############# linux ####################${reset}\n\n"
+printf "${blue}"
+ echo " 
+######## ##    ##    ###    ##       #### 
+   ##    ##   ##    ## ##   ##        ##  
+   ##    ##  ##    ##   ##  ##        ##  
+   ##    #####    ##     ## ##        ##  
+   ##    ##  ##   ######### ##        ##  
+   ##    ##   ##  ##     ## ##        ##  
+   ##    ##    ## ##     ## ######## #### 
+   "
+   printf "${green}by termuxkali${reset}\n"
+    
 }
-
-
-##################################
-##              Main            ##
 
 kali_logo
 printf "${blue}[=]checking architecture ....${reset}\n"
@@ -128,7 +122,7 @@ cd
 add_kali_launcher
 cd
 fix_sudo
-kali_logo
+clear
 printf "${green}[+]add user${reset}\n"
 fix_net
 add_user
